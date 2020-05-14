@@ -6,6 +6,8 @@
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
 	    '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+	    '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize)
 
 (org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
@@ -46,7 +48,7 @@
      ("???" . "#dc752f"))))
  '(package-selected-packages
    (quote
-    (auto-complete org-bullets switch-window rainbow-mode rainbow-identifiers avy smex ido-vertical-mode evil beacon spacemacs-theme which-key use-package)))
+    (neotree rainbow-delimiters php-mode projectile magit magin auto-complete org-bullets switch-window rainbow-mode rainbow-identifiers avy smex ido-vertical-mode evil beacon spacemacs-theme which-key use-package)))
  '(pdf-view-midnight-colors (quote ("#655370" . "#fbf8ef"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -24,6 +24,9 @@
     :init
     (evil-mode 1))
 
+  (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+
+
   (use-package ido-vertical-mode
     :ensure t
     :init
@@ -51,7 +54,7 @@
     :config
     (setq switch-window-input-style 'minibuffer)
     (setq switch-window-increase 4)
-    (setq switch-window-threshold 1)
+    (setq switch-window-threshold 2)
     (setq switch-window-shortcut-style 'qwerty)
     (setq switch-window-qwerty-shortcuts
 	  '("a" "s" "d" "f" "g" "h" "j" "k" "l"))
@@ -66,6 +69,42 @@
   (use-package auto-complete
     :ensure t
     :init (auto-complete-mode 1))
+
+  (use-package magit
+    :ensure t
+    :config (global-set-key (kbd "C-c m") 'magit-status))
+
+  (use-package projectile
+    :ensure t
+    :pin "melpa-stable"
+    :config
+    (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+    (projectile-mode +1))
+
+  (use-package php-mode
+    :ensure t)
+
+  (use-package rainbow-delimiters
+    :ensure t
+    :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+  (use-package neotree
+    :ensure t
+    :bind ([f8] . 'neotree-toggle)
+    :config
+	(setq neo-smart-open t)
+	(setq projectile-switch-project-action 'neotree-projectile-action)
+	(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+	(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+	(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+	(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+	(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+	(evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+	(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+	(evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+	(evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
+  )
 #+END_SRC
 
 * Tweaks
@@ -81,8 +120,16 @@
   (scroll-bar-mode -1)
   (display-line-numbers-mode 1)
   (setq inhibit-startup-message t)
+  (setq line-spacing 8)
+  (setq make-backup-files nil)
   (global-prettify-symbols-mode t)
   (global-subword-mode 1)
+  (show-paren-mode 1)
+  
+  (global-hl-line-mode 1)
+  (set-face-background 'highlight "#2a2a2a")
+  (set-face-foreground 'highlight nil)
+  (set-face-underline-p 'highlight t)
 #+END_SRC
 ** IDO
 #+BEGIN_SRC emacs-lisp

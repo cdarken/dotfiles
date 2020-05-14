@@ -7,6 +7,9 @@
 set nocompatible
 filetype off
 
+" To start:
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -97,11 +100,12 @@ set path+=**
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>p "+p
 nnoremap <Leader>i "*p 
-nnoremap <M-right> :tabnext<CR>
-nnoremap <M-left> :tabprev<CR>
+"nnoremap <Leader>n :tabnext<CR>
+"nnoremap <Leader>p :tabprev<CR>
 map <C-n> :NERDTreeToggle<CR>
-map <C-Tab> :bnext<CR>
-map <C-S-Tab> :bprev<CR>
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
 " noremap <Leader>o meo^[`e
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>0
